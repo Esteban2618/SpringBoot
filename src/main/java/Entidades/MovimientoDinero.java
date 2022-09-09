@@ -2,16 +2,16 @@ package Entidades;
 
 public class MovimientoDinero {
     private int monto, montoPositivo, montoNegativo;
-    private String conceptoMovimiento, usuario;
+    private String conceptoMovimiento;
+    private Usuario usuario;
 
-    public MovimientoDinero(int monto, int montoPositivo, int montoNegativo, String conceptoMovimiento, String usuario) {
+    public MovimientoDinero(int monto, int montoPositivo, int montoNegativo, String conceptoMovimiento, Usuario usuario) {
         this.monto = monto;
         this.montoPositivo = montoPositivo;
         this.montoNegativo = montoNegativo;
         this.conceptoMovimiento = conceptoMovimiento;
         this.usuario = usuario;
     }
-
     public int getMonto() {
         return monto;
     }
@@ -44,11 +44,11 @@ public class MovimientoDinero {
         this.conceptoMovimiento = conceptoMovimiento;
     }
 
-    public String getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(String usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 }
