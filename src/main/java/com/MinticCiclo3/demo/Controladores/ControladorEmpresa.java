@@ -4,28 +4,27 @@ import com.MinticCiclo3.demo.Entidades.Empresa;
 import com.MinticCiclo3.demo.Servicios.IServicioEmpresa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
-@RequestMapping("/empresas")
+@RequestMapping("")
 public class ControladorEmpresa {
 
     @Autowired
     IServicioEmpresa servicioEmpresa;
 
-    //GET
-    @GetMapping("")
+    //GET ALL
+    @GetMapping("/empresas")
     @ResponseBody
     public List<Empresa> findAll(){
-        return (List<Empresa>) servicioEmpresa.getAll();
+        return servicioEmpresa.getAll();
     }
 
     //POST
-    @PostMapping("")
+    @PostMapping("/empresas")
     @ResponseBody
-    public Empresa create(@RequestBody Empresa empresa){
-        return servicioEmpresa.create(empresa);
+    public Empresa crear(@RequestBody Empresa empresa){
+        return servicioEmpresa.crear(empresa);
     }
 
     //GET ID
@@ -46,6 +45,6 @@ public class ControladorEmpresa {
     @DeleteMapping("/{id}")
     @ResponseBody
     public Boolean delete (@PathVariable long id){
-        return servicioEmpresa.delete(id);
+        return servicioEmpresa.eliminar(id);
     }
 }

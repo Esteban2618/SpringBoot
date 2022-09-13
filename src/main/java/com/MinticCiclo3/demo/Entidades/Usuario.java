@@ -22,7 +22,6 @@ public class Usuario {
     @Column(unique = true)
     private String email;
 
-    @Column
     @OneToOne(mappedBy = "usuario") //, cascade = CascadeType.ALL)
     //@PrimaryKeyJoinColumn
     private Perfil perfil;
@@ -31,12 +30,10 @@ public class Usuario {
     @Enumerated(value = EnumType.STRING)
     private Enum_RoleName rol;
 
-    @Column
     @ManyToOne
     @JoinColumn(name = "empresa_id")    //a que atributo de la otra clase va apuntar
     private Empresa empresa;
 
-    @Column
     @OneToMany(mappedBy = "usuario")
     private List<MovimientoDinero> movimientoDineros;
 

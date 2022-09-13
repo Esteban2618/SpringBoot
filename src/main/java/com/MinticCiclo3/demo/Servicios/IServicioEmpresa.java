@@ -11,7 +11,7 @@ public interface IServicioEmpresa {
     public List<Empresa> getAll();
 
     //POST
-    public Empresa create(Empresa empresa);
+    public Empresa crear(Empresa empresa);
 
     //GET(id)
     public Empresa getById(long id);
@@ -20,5 +20,5 @@ public interface IServicioEmpresa {
     public Empresa update(long id, Empresa empresa);
 
     //DELETE
-    public boolean delete (long id);
+    public boolean eliminar (long id);
 }

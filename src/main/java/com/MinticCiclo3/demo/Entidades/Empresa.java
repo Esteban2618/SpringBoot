@@ -17,20 +17,23 @@ public class Empresa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private Long id;
 
     @Column(unique = true)
-    private String nombre, nit;
+    private String nombre;
+
+    @Column(unique = true)
+    private String nit;
 
     @Column
-    private String telefono, direccion;
+    private String telefono;
 
     @Column
+    private String direccion;
+
     @OneToMany(mappedBy = "empresa", fetch= FetchType.LAZY)     //fetch: como uno se trae una información cuando hay relación. LAZY: relaciones pesadas eager: relaciones sencillas
     private List<Usuario> usuarios;
 
-    @Column
     @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY)
     private List<MovimientoDinero> movimientoDineros;
 

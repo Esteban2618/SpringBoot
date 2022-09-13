@@ -24,7 +24,6 @@ public class Perfil {
     @Column
     private String imagen, telefono;
 
-    @Column
     @OneToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;

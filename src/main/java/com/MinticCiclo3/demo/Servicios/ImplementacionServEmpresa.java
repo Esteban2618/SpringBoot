@@ -6,6 +6,7 @@ import org.apache.catalina.webresources.EmptyResourceSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -19,19 +20,28 @@ CRUD Básico con Java Sprint Boot	Juan Manuel Suarez, TDO 19
 public class ImplementacionServEmpresa implements IServicioEmpresa {
 
     //Adiciona dependencias
-    @Autowired
+    @Autowired  //Comunicación entre servicio y el repositorio
     IRepositorioEmpresa repositorioEmpresa;
 
+    //OBTENER TODAS LAS EMPRESAS
     @Override
-    public List<Empresa> getAll() {
+    public List<Empresa> getAll(){
+        List<Empresa> empresas = new ArrayList<Empresa>();
+        empresas.addAll(repositorioEmpresa.findAll());
+        return empresas;
+    }
+    /*public List<Empresa> getAll() {
         return (List<Empresa>) repositorioEmpresa.findAll();
     }
+    */
 
+    //CREAR EMPRESA
     @Override
-    public Empresa create(Empresa empresa) {
+    public Empresa crear(Empresa empresa) {
         return repositorioEmpresa.save(empresa);
     }
 
+    //OBTENER UNA EMPRESA POR ID
     @Override
     public Empresa getById(long id) {
         Empresa empresa = repositorioEmpresa.findById(id).orElse(null);     //valida si enceunta el id o da null
@@ -41,15 +51,17 @@ public class ImplementacionServEmpresa implements IServicioEmpresa {
     @Override
     public Empresa update(long id, Empresa empresa) {
         Empresa empresaAuxiliar = repositorioEmpresa.findById(id).orElse(null);
-        //empresaAuxiliar.setId(empresa.getId());
+        empresaAuxiliar.setId(empresa.getId());
         empresaAuxiliar.setNit(empresa.getNit());
-        //empresaAuxiliar.setUsuario(empresa.getUsuario());
+        empresaAuxiliar.setNombre(empresa.getNombre());
+        empresaAuxiliar.setTelefono(empresaAuxiliar.getTelefono());
+        empresaAuxiliar.setDireccion(empresaAuxiliar.getDireccion());
         repositorioEmpresa.save(empresaAuxiliar);
         return  empresaAuxiliar;
     }
 
     @Override
-    public boolean delete(long id) {
+    public boolean eliminar(long id) {
         boolean bandera = true;
         Empresa empresaAuxiliar = repositorioEmpresa.findById(id).orElse(null);
 
