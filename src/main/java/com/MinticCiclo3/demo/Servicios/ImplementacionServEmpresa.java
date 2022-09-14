@@ -30,10 +30,6 @@ public class ImplementacionServEmpresa implements IServicioEmpresa {
         empresas.addAll(repositorioEmpresa.findAll());
         return empresas;
     }
-    /*public List<Empresa> getAll() {
-        return (List<Empresa>) repositorioEmpresa.findAll();
-    }
-    */
 
     //CREAR EMPRESA
     @Override
@@ -54,8 +50,8 @@ public class ImplementacionServEmpresa implements IServicioEmpresa {
         empresaAuxiliar.setId(empresa.getId());
         empresaAuxiliar.setNit(empresa.getNit());
         empresaAuxiliar.setNombre(empresa.getNombre());
-        empresaAuxiliar.setTelefono(empresaAuxiliar.getTelefono());
-        empresaAuxiliar.setDireccion(empresaAuxiliar.getDireccion());
+        empresaAuxiliar.setTelefono(empresa.getTelefono());
+        empresaAuxiliar.setDireccion(empresa.getDireccion());
         repositorioEmpresa.save(empresaAuxiliar);
         return  empresaAuxiliar;
     }
